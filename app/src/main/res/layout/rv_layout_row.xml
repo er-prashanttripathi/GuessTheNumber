@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+<com.google.android.material.card.MaterialCardView
+    app:cardCornerRadius="5dp"
+    android:elevation="10dp"
+    app:strokeColor="#0afaff"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#497a88">
+    <LinearLayout
+        android:background="#497a88"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtrcv"
+            android:textColor="#0afaff"
+            app:fontFamily="@font/vt323"
+
+            android:text="You Entered Right Number!!!"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+</layout>
