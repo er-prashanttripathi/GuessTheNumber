@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bgthree"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".LevelActivity">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnstage1"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#009688"
+            android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
+            android:text="Stage: 1"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+            android:textSize="32sp"
+            app:cornerRadius="80dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnstage2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#009688"
+            android:gravity="center"
+            android:text="Stage: 2"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+            android:textSize="32sp"
+            app:cornerRadius="80dp"
+             />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnstage3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#009688"
+            android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
+            android:text="Stage: 3"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+            android:textSize="32sp"
+            app:cornerRadius="80dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnstage4"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#009688"
+            android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
+            android:text="Stage: 4"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+            android:textSize="32sp"
+            app:cornerRadius="80dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnstage5"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#009688"
+            android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
+            android:text="Stage: 5"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+            android:textSize="32sp"
+            app:cornerRadius="80dp" />
+
+
+    </LinearLayout>
+</layout>

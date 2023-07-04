@@ -1,5 +1,6 @@
 package com.example.guessthenumber
 
+
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -8,6 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
+import com.example.guessthenumber.setData.level
+import com.example.guessthenumber.setData.maxstep
+import com.example.guessthenumber.setData.range
+import com.example.guessthenumber.setData.stage
 import kotlin.random.Random
 
 
@@ -15,86 +20,107 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var stringlist = mutableListOf<String>()
     private lateinit var error: String
-    var uno: Int = -1
-    var i: Int = 0
+    var inputno: Int = -1
+    var stepcount: Int = 0
     var rno: Int = -1
+
     private lateinit var m: String
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
-        rno = generateRandomNumber()
+        Toast.makeText(this, "$level,$range,$maxstep,$", Toast.LENGTH_SHORT).show()
+        rno = generateRandomNo(range)
         binding.apply {
+            txtmsg.text = "Enter a no between 1 to $range & $rno"
             rcvOfError.layoutManager = LinearLayoutManager(this@MainActivity)
             rcvOfError.adapter = RcvAdapter(stringlist)
-
             btnSubmit.setOnClickListener {
                 takeinput()
-                if (uno==-1){
-                    Toast.makeText(this@MainActivity, "Input Cann't be Blank", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    i++
-                }
-
-
-
-                txtcount.text = "Step count $i"
-
-
-                when {
-                    uno > rno -> {
-                        txtmsg.text = "You entered a greater number"
-                        m = "You entered a greater number"
-                        addToList("$uno :$m")
-                    }
-
-                    uno < rno -> {
-                        if (uno==-1){
-                            Toast.makeText(this@MainActivity, "Input Cann't be Blank", Toast.LENGTH_SHORT).show()
-                        }
-                        else{ txtmsg.text = "You entered a smaller number"
-                            m = "You entered a smaller number"
-                            addToList("$uno :$m")}
-
-                    }
-
-                    else -> {
-                        Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT)
-                            .show()
-                        m = "You entered the correct number"
-                        addToList("$uno :$m")
-                        txtmsg.text = "You entered the correct number"
-                        txtRandomNo.text = "Random No is, $rno!"
-                        txtWon.text = "YOU WON!!!!!!"
-                        txtcount.text = "Step count $i"
-                    }
-
-
-                }
+                increasestepcount()
+                txtcount.text = "Step count $stepcount"
+                checkcondition()
                 rcvOfError.adapter?.notifyDataSetChanged()
                 txtinput.text!!.clear()
-                uno=-1
-
+                inputno = -1
             }
-
-
         }
 
     }
 
+    private fun increasestepcount() {
+        if (inputno == -1) {
+            Toast.makeText(this@MainActivity, "Input Cann't be Blank", Toast.LENGTH_SHORT)
+                .show()
+        }
+        else {
+            stepcount++
+        }
+    }
+
+    private fun checkcondition() {
+        binding.apply {
+            when {
+                inputno > rno -> {
+                    txtmsg.text = "You entered a greater number"
+                    m = "You entered a greater number"
+                    addToList("$inputno :$m")
+                }
+
+                inputno < rno -> {
+                    if (inputno == -1) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Input Cann't be Blank",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        txtmsg.text = "You entered a smaller number"
+                        m = "You entered a smaller number"
+                        addToList("$inputno :$m")
+                    }
+
+                }
+
+                else -> {
+                    Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT)
+                        .show()
+                    m = "You entered the correct number"
+                    addToList("$inputno :$m")
+                    txtmsg.text = "You entered the correct number"
+                    txtRandomNo.text = "Random No is, $rno!"
+                    txtWon.text = "YOU WON!!!!!!"
+                    txtcount.text = "Step count $stepcount"
+                }
+
+
+            }
+        }
+
+    }
+
+    private fun generateRandomNo(maxran: Int): Int {
+        return Random.nextInt(1, maxran)
+    }
+
+
     private fun takeinput() {
 
         val input = binding.txtinput.text!!.trim().toString()
-        if (input.isNotEmpty()) {
-            uno = input.toInt()
+        if (maxstep > 0) {
+            if (input.isNotEmpty()) {
+                binding.txtlevel.text = "Level:$level"
+                binding.txtstage.text = "Level:$stage"
+                binding.txtstepleft.text = "Step:$maxstep"
+                inputno = input.toInt()
+                maxstep--
+            } else {
+
+                binding.txtmsg.text = "Enter the correct number..."
+            }
         } else {
-//            uno = -1
-            binding.txtmsg.text = "Enter the correct number..."
+            Toast.makeText(this@MainActivity, "No Chance Left", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun addToList(mymsg: String) {
