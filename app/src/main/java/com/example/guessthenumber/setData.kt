@@ -11,6 +11,7 @@ object setData {
     var maxstep:Int=-1
     var currentstage:Int=-1
     var currentlevel:Int=-1
+    var uName:String="Prashant"
 
      fun setMaxSteps(context: Context) {
         when (stage) {
@@ -18,9 +19,8 @@ object setData {
             2 -> maxstep = 9
             3 -> maxstep = 8
             4 -> maxstep = 7
-            5 -> maxstep = 6
             else -> {
-                Toast.makeText(context, "Stage ${stage} Complete", Toast.LENGTH_SHORT).show()
+                maxstep = 6
             }
         }
     }
@@ -31,9 +31,8 @@ object setData {
             2 -> range = 2
             3 -> range = 3
             4 -> range = 4
-            5 -> range = 5
             else -> {
-                Toast.makeText(context, "Game Over", Toast.LENGTH_SHORT).show()
+                range = 5
             }
 
         }

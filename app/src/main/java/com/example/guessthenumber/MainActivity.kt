@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
-import com.example.guessthenumber.setData.currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
 import com.example.guessthenumber.setData.range
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     txtWon.text = "YOU WON!!!!!!"
                     txtcount.text = "Step count $stepcount"
 
-                    if (stage < 5 && currentstage==stage) {
+                    if (stage < 5) {
                         stage++
                         setData.setrange(this@MainActivity)
                         setData.setMaxSteps(this@MainActivity)

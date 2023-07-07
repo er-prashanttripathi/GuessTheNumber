@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.guessthenumber.databinding.ActivityLevelBinding
+import com.example.guessthenumber.setData.currentlevel
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.stage
 import kotlinx.coroutines.Dispatchers
@@ -72,7 +73,7 @@ class LevelActivity : AppCompatActivity() {
             1 -> {
                 binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel1.setOnClickListener {
-
+                    currentlevel=1
                     gotostage()
                 }
             }
@@ -80,18 +81,34 @@ class LevelActivity : AppCompatActivity() {
             2 -> {
                 binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnlevel2.setOnClickListener {
+                binding.btnlevel1.setOnClickListener {
+                    currentlevel=1
                     gotostage()
                 }
+                binding.btnlevel2.setOnClickListener {
+                    currentlevel=2
+                    gotostage()
+                }
+
             }
 
             3 -> {
                 binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnlevel3.setOnClickListener {
+                binding.btnlevel1.setOnClickListener {
+                    currentlevel=1
                     gotostage()
                 }
+                binding.btnlevel2.setOnClickListener {
+                    currentlevel=2
+                    gotostage()
+                }
+                binding.btnlevel3.setOnClickListener {
+                    currentlevel=3
+                    gotostage()
+                }
+
             }
 
             4 -> {
@@ -100,7 +117,20 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel4.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel1.setOnClickListener {
+                    currentlevel=1
+                    gotostage()
+                }
+                binding.btnlevel2.setOnClickListener {
+                    currentlevel=2
+                    gotostage()
+                }
+                binding.btnlevel3.setOnClickListener {
+                    currentlevel=3
+                    gotostage()
+                }
                 binding.btnlevel4.setOnClickListener {
+                    currentlevel=4
                     gotostage()
                 }
             }
