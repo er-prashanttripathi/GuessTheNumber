@@ -1,6 +1,7 @@
 package com.example.guessthenumber
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,12 +18,8 @@ import kotlinx.coroutines.launch
 class LevelActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLevelBinding
     lateinit var userDetail: UserDetails
+    val activeColor = "#009688"
 
-//
-//    var stage: Int = 0
-//    var level: Int = 0
-
-    //    val level = MutableSharedFlow<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -30,39 +27,22 @@ class LevelActivity : AppCompatActivity() {
         userDetail = UserDetails(this)
 //        Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
         Log.d("level&state1", "onCreate: ${setData.level}  & $stage")
-        /*   lifecycleScope.launch {
-               getlevel()
-           }
-           lifecycleScope.launch {
-               level.collect {
-                   Log.d("mylevelval", "getlevel: $it")
-               }
-           }
-           Toast.makeText(this, "$level  & $state", Toast.LENGTH_SHORT).show()*/
+
         getlevel()
 
-//        Toast.makeText(this, "$level  & $stage", Toast.LENGTH_LONG).show()
+
         Log.d("level&state2", "onCreate: $level & $stage")
     }
 
 
-    /*    suspend fun getlevel() {
 
-            userDetail.getLevel().collect() {
-
-                level.emit(it.toString().toInt())
-
-                Log.d("myvalue", "$level ")
-            }
-
-
-        }*/
     private fun getlevel() {
         lifecycleScope.launch {
             userDetail.getLevel().collect() {
 
                 binding.levelid.text = it.toString()
                 level = it.toString().toInt()
+
 //                Toast.makeText(this@LevelActivity, "$level  & $stage", Toast.LENGTH_SHORT).show()
                 Log.d("level&state3", "onCreate: $level & $stage")
                 getstate()
@@ -88,22 +68,51 @@ class LevelActivity : AppCompatActivity() {
     }
 
     private fun openlevel() {
+        when (level) {
+            1 -> {
+                binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel1.setOnClickListener {
 
-        binding.btnlevel1.setOnClickListener {
-            gotostage()
+                    gotostage()
+                }
+            }
 
-        }
-        binding.btnlevel2.setOnClickListener {
-            gotostage()
-        }
-        binding.btnlevel3.setOnClickListener {
-            gotostage()
-        }
-        binding.btnlevel4.setOnClickListener {
-            gotostage()
-        }
-        binding.btnlevel5.setOnClickListener {
-            gotostage()
+            2 -> {
+                binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel2.setOnClickListener {
+                    gotostage()
+                }
+            }
+
+            3 -> {
+                binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel3.setOnClickListener {
+                    gotostage()
+                }
+            }
+
+            4 -> {
+
+                binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel4.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel4.setOnClickListener {
+                    gotostage()
+                }
+            }
+
+            5 -> run {
+                setData.range = 5
+            }
+
+            else -> {
+                Toast.makeText(this@LevelActivity, "Level Over", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
 

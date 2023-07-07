@@ -1,6 +1,7 @@
 package com.example.guessthenumber
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
+import com.example.guessthenumber.setData.currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
 import com.example.guessthenumber.setData.range
@@ -28,8 +30,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        Toast.makeText(this, "$level,$range,$maxstep,$", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "$level,$range,$maxstep", Toast.LENGTH_SHORT).show()
         rno = generateRandomNo(range)
+
         binding.apply {
             txtmsg.text = "Enter a no between 1 to $range & $rno"
             rcvOfError.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -51,8 +54,7 @@ class MainActivity : AppCompatActivity() {
         if (inputno == -1) {
             Toast.makeText(this@MainActivity, "Input Cann't be Blank", Toast.LENGTH_SHORT)
                 .show()
-        }
-        else {
+        } else {
             stepcount++
         }
     }
@@ -90,12 +92,40 @@ class MainActivity : AppCompatActivity() {
                     txtRandomNo.text = "Random No is, $rno!"
                     txtWon.text = "YOU WON!!!!!!"
                     txtcount.text = "Step count $stepcount"
+
+                    if (stage < 5 && currentstage==stage) {
+                        stage++
+                        setData.setrange(this@MainActivity)
+                        setData.setMaxSteps(this@MainActivity)
+                    }
+                    else {
+                        if (level < 5) {
+                            level++
+                            setData.setrange(this@MainActivity)
+                            setData.setMaxSteps(this@MainActivity)
+                            movebacktolevel()
+                        }
+                        else {
+                            Toast.makeText(this@MainActivity, "Congratulations!, All Level Completed", Toast.LENGTH_SHORT).show()                        }
+
+                    }
+                    movebacktostage()
                 }
 
 
             }
         }
 
+    }
+
+    private fun movebacktolevel() {
+        startActivity(Intent(this@MainActivity, LevelActivity::class.java))
+        finish()
+    }
+
+    private fun movebacktostage() {
+        startActivity(Intent(this@MainActivity, StageActivity::class.java))
+        finish()
     }
 
     private fun generateRandomNo(maxran: Int): Int {
@@ -110,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             if (input.isNotEmpty()) {
                 binding.txtlevel.text = "Level:$level"
                 binding.txtstage.text = "Level:$stage"
-                binding.txtstepleft.text = "Step:$maxstep"
+                binding.txtstepleft.text = "$maxstep:Left"
                 inputno = input.toInt()
                 maxstep--
             } else {

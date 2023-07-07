@@ -11,27 +11,30 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".LevelActivity">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/levelid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:layout_marginHorizontal="20dp"
-                android:textSize="32sp"
-                android:text="level"/>
+                android:text="level"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
+
             <TextView
                 android:id="@+id/stageid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="32sp"
                 android:layout_marginHorizontal="20dp"
-                android:text="stage"/>
+                android:text="stage"
+                android:textColor="@color/white"
+                android:textSize="32sp" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -40,80 +43,80 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#009688"
+            android:backgroundTint="#808080"
+            android:clickable="false"
             android:gravity="center"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp"
             android:text="Level: 1"
             android:textColor="@color/white"
-            app:fontFamily="@font/vt323"
             android:textSize="32sp"
             app:cornerRadius="10dp"
-            />
+            app:fontFamily="@font/vt323"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-           android:layout_marginTop="20dp" 
-            android:backgroundTint="#009688"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#808080"
             android:gravity="center"
             android:text="Level: 2"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp"
             android:textColor="@color/white"
-            app:fontFamily="@font/vt323"
             android:textSize="32sp"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="10dp"
+            app:fontFamily="@font/vt323"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-           android:layout_marginTop="20dp" 
-            android:backgroundTint="#009688"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#808080"
             android:gravity="center"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp"
             android:text="Level: 3"
             android:textColor="@color/white"
-            app:fontFamily="@font/vt323"
             android:textSize="32sp"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="10dp"
+            app:fontFamily="@font/vt323"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-           android:layout_marginTop="20dp" 
-            android:backgroundTint="#009688"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#808080"
             android:gravity="center"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp"
             android:text="Level: 4"
             android:textColor="@color/white"
-            app:fontFamily="@font/vt323"
             android:textSize="32sp"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="10dp"
+            app:fontFamily="@font/vt323"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-           android:layout_marginTop="20dp" 
-            android:backgroundTint="#009688"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#808080"
             android:gravity="center"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp"
             android:text="Level: 5"
             android:textColor="@color/white"
-            app:fontFamily="@font/vt323"
             android:textSize="32sp"
-            app:cornerRadius="10dp" />
+            app:cornerRadius="10dp"
+            app:fontFamily="@font/vt323"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp" />
 
 
     </LinearLayout>
