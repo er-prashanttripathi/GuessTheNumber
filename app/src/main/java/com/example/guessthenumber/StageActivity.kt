@@ -16,15 +16,22 @@ import com.example.guessthenumber.setData.range
 import com.example.guessthenumber.setData.setMaxSteps
 import com.example.guessthenumber.setData.setrange
 import com.example.guessthenumber.setData.stage
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class StageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStageBinding
     val activeColor = "#009688"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_stage)
+        binding.apply {
+            levelid.text="Level:$level"
+            stageid.text="Stage:$stage"
+        }
+        Log.d("levelNstateStage", "onCreate: $level & $stage")
         Toast.makeText(this@StageActivity, "$level & $stage", Toast.LENGTH_SHORT).show()
         setrange(this@StageActivity)
         setMaxSteps(this@StageActivity)
@@ -38,6 +45,7 @@ class StageActivity : AppCompatActivity() {
                 binding.btnstage1.setOnClickListener {
                     currentstage = 1
                     gotoGame()
+
                 }
             }
 
@@ -138,6 +146,7 @@ class StageActivity : AppCompatActivity() {
 
     private fun gotoGame() {
         startActivity(Intent(this@StageActivity, MainActivity::class.java))
+        finish()
     }
 
   

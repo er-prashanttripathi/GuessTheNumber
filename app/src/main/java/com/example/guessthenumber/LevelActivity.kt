@@ -26,25 +26,28 @@ class LevelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_level)
         userDetail = UserDetails(this)
+        binding.apply {
+
+            vlevelid.text="Level:$level"
+            vstageid.text="Stage:$stage"
+        }
 //        Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
         Log.d("levelNstate1", "onCreate: ${level}  & $stage")
-
-        getuserlevel()
-
-
+        openlevel()
+//        getuserlevel()
         Log.d("levelNstate2", "onCreate: $level & $stage")
     }
 
 
 
-    private fun getuserlevel() {
+   /* private fun getuserlevel() {
         lifecycleScope.launch {
             userDetail.getLevel().collect() {
 
                 binding.levelid.text = it.toString()
                 level = it.toString().toInt()
 
-//                Toast.makeText(this@LevelActivity, "$level  & $stage", Toast.LENGTH_SHORT).show()
+
                 Log.d("levelNstate3", "onCreate: $level & $stage")
                 getuserstate()
                 Log.d("myinside", "getlevel: $level")
@@ -52,21 +55,21 @@ class LevelActivity : AppCompatActivity() {
             }
         }
 
-    }
+    }*/
 
-    private fun getuserstate() {
+    /*private fun getuserstate() {
         lifecycleScope.launch {
             userDetail.getState().collect() {
                 binding.stageid.text = it.toString()
                 stage = it.toString().toInt()
-//                Toast.makeText(this@LevelActivity, "$level  & $stage", Toast.LENGTH_SHORT).show()
+
                 openlevel()
                 Log.d("levelNstate4", "onCreate: $level & $stage")
-                Log.d("myinside", "getstate: $stage")
+
             }
         }
 
-    }
+    }*/
 
     private fun openlevel() {
         when (level) {
@@ -75,7 +78,6 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
-                    finish()
                 }
             }
 
@@ -85,12 +87,10 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
-                    finish()
                 }
                 binding.btnlevel2.setOnClickListener {
                     currentlevel=2
                     gotostage()
-                    finish()
                 }
 
             }
@@ -102,18 +102,14 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
-                    finish()
                 }
                 binding.btnlevel2.setOnClickListener {
                     currentlevel=2
                     gotostage()
-                    finish()
                 }
                 binding.btnlevel3.setOnClickListener {
                     currentlevel=3
                     gotostage()
-                    finish()
-
                 }
 
             }
@@ -127,22 +123,18 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
-                    finish()
                 }
                 binding.btnlevel2.setOnClickListener {
                     currentlevel=2
                     gotostage()
-                    finish()
                 }
                 binding.btnlevel3.setOnClickListener {
                     currentlevel=3
                     gotostage()
-                    finish()
                 }
                 binding.btnlevel4.setOnClickListener {
                     currentlevel=4
                     gotostage()
-                    finish()
                 }
             }
 
@@ -160,6 +152,7 @@ class LevelActivity : AppCompatActivity() {
 
     private fun gotostage() {
         startActivity(Intent(this@LevelActivity, StageActivity::class.java))
+        finish()
     }
 
 

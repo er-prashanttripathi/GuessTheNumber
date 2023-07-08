@@ -3,37 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/bgfour"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".LevelActivity">
+        tools:context=".LevelActivity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <LinearLayout
+           android:elevation="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:orientation="horizontal">
+         android:layout_marginStart="20dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/levelid"
+                android:background="#22423b"
+                android:paddingHorizontal="10dp"
+                android:id="@+id/vlevelid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:text="level"
-                android:textColor="@color/white"
+                app:fontFamily="@font/vt323"
+                android:textColor="#0afaff"
                 android:textSize="32sp" />
 
             <TextView
-                android:id="@+id/stageid"
+                android:background="#22423b"
+                android:id="@+id/vstageid"
+                android:paddingHorizontal="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:text="stage"
-                android:textColor="@color/white"
+                app:fontFamily="@font/vt323"
+                android:textColor="#0afaff"
                 android:textSize="32sp" />
         </LinearLayout>
 
@@ -43,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#808080"
+            android:backgroundTint="#22423b"
             android:clickable="false"
             android:gravity="center"
             android:text="Level: 1"
@@ -60,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#808080"
+            android:backgroundTint="#22423b"
             android:gravity="center"
             android:text="Level: 2"
             android:textColor="@color/white"
@@ -76,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#808080"
+            android:backgroundTint="#22423b"
             android:gravity="center"
             android:text="Level: 3"
             android:textColor="@color/white"
@@ -92,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#808080"
+            android:backgroundTint="#22423b"
             android:gravity="center"
             android:text="Level: 4"
             android:textColor="@color/white"
@@ -108,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#808080"
+            android:backgroundTint="#22423b"
             android:gravity="center"
             android:text="Level: 5"
             android:textColor="@color/white"
@@ -120,4 +133,6 @@
 
 
     </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

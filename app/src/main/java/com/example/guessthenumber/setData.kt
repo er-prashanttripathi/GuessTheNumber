@@ -5,13 +5,14 @@ import android.widget.Toast
 
 object setData {
     const val name:String="name"
-    var level:Int=-1
-    var stage:Int=-1
+    var level:Int=1
+    var stage:Int=1
     var range:Int=-1
     var maxstep:Int=-1
     var currentstage:Int=-1
     var currentlevel:Int=-1
     var uName:String="Prashant"
+    lateinit var userDetail: UserDetails
 
      fun setMaxSteps(context: Context) {
         when (stage) {
@@ -29,10 +30,10 @@ object setData {
         when (level) {
             1 -> range = 2
             2 -> range = 2
-            3 -> range = 3
-            4 -> range = 4
+            3 -> range = 2
+            4 -> range = 2
             else -> {
-                range = 5
+                range = 3
             }
 
         }

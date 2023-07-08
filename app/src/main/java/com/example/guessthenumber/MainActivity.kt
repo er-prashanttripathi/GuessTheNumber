@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
+import com.example.guessthenumber.setData.currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
 import com.example.guessthenumber.setData.range
@@ -102,31 +103,24 @@ class MainActivity : AppCompatActivity() {
                     txtWon.text = "YOU WON!!!!!!"
                     txtcount.text = "Step count $stepcount"
 
-                    if (stage < 5) {
+                    if (stage < 5 && currentstage==stage) {
                         Log.d("level&stage1", "level:$level Stage:$stage")
                         stage++
                         setData.setrange(this@MainActivity)
                         setData.setMaxSteps(this@MainActivity)
                         Log.d("level&stage2", "level:$level Stage:$stage")
-                        updatedata("pt", level,stage)
-                        runBlocking {
-                            async { CoroutineScope(Dispatchers.IO).launch {
-                                userDetail.storeUserData("prashant", level.toInt(),stage.toInt())
-                            } }
-                            Log.d("level&stage3", "level:$level Stage:$stage")
-                        }
 
-
-                        movebacktostage()
-                    } else {
-                        if (level < 5) {
-
+                    }
+                    else {
+                        Log.d("level&stage3", "level:$level Stage:$stage")
+                        if (level < 5 && stage==5) {
+                            Log.d("level&stage4", "level:$level Stage:$stage")
                             level++
-
+                            stage=1
                             setData.setrange(this@MainActivity)
                             setData.setMaxSteps(this@MainActivity)
-
-                            movebacktolevel()
+                            Log.d("level&stage5", "level:$level Stage:$stage")
+//                            movebacktolevel()
                         } else {
                             Toast.makeText(
                                 this@MainActivity,
@@ -136,7 +130,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                     }
-
+                    movebacktostage()
                 }
 
 
@@ -145,14 +139,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun updatedata(n: String, l: Int, s: Int) {
-
-    }
-
 
     private fun movebacktolevel() {
         startActivity(Intent(this@MainActivity, LevelActivity::class.java))
         finish()
+
     }
 
     private fun movebacktostage() {

@@ -14,8 +14,8 @@ class UserDetails(val context: Context) {
 
     companion object {
         val USERNAME = stringPreferencesKey("USER_NAME")
-        val GameLevel = intPreferencesKey("STAGE")
-        val GameStage = intPreferencesKey("LEVEL")
+        val GameLevel = intPreferencesKey("LEVEL")
+        val GameStage = intPreferencesKey("STAGE")
 
     }
 
@@ -40,3 +40,5 @@ class UserDetails(val context: Context) {
         it[GameLevel] ?: 1
     }
 }
+
+
