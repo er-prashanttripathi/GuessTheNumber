@@ -27,17 +27,17 @@ class LevelActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_level)
         userDetail = UserDetails(this)
 //        Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
-        Log.d("level&state1", "onCreate: ${setData.level}  & $stage")
+        Log.d("levelNstate1", "onCreate: ${level}  & $stage")
 
-        getlevel()
+        getuserlevel()
 
 
-        Log.d("level&state2", "onCreate: $level & $stage")
+        Log.d("levelNstate2", "onCreate: $level & $stage")
     }
 
 
 
-    private fun getlevel() {
+    private fun getuserlevel() {
         lifecycleScope.launch {
             userDetail.getLevel().collect() {
 
@@ -45,8 +45,8 @@ class LevelActivity : AppCompatActivity() {
                 level = it.toString().toInt()
 
 //                Toast.makeText(this@LevelActivity, "$level  & $stage", Toast.LENGTH_SHORT).show()
-                Log.d("level&state3", "onCreate: $level & $stage")
-                getstate()
+                Log.d("levelNstate3", "onCreate: $level & $stage")
+                getuserstate()
                 Log.d("myinside", "getlevel: $level")
 
             }
@@ -54,14 +54,14 @@ class LevelActivity : AppCompatActivity() {
 
     }
 
-    private fun getstate() {
+    private fun getuserstate() {
         lifecycleScope.launch {
             userDetail.getState().collect() {
                 binding.stageid.text = it.toString()
                 stage = it.toString().toInt()
 //                Toast.makeText(this@LevelActivity, "$level  & $stage", Toast.LENGTH_SHORT).show()
                 openlevel()
-                Log.d("level&state4", "onCreate: $level & $stage")
+                Log.d("levelNstate4", "onCreate: $level & $stage")
                 Log.d("myinside", "getstate: $stage")
             }
         }
@@ -75,6 +75,7 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
+                    finish()
                 }
             }
 
@@ -84,10 +85,12 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
+                    finish()
                 }
                 binding.btnlevel2.setOnClickListener {
                     currentlevel=2
                     gotostage()
+                    finish()
                 }
 
             }
@@ -99,14 +102,18 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
+                    finish()
                 }
                 binding.btnlevel2.setOnClickListener {
                     currentlevel=2
                     gotostage()
+                    finish()
                 }
                 binding.btnlevel3.setOnClickListener {
                     currentlevel=3
                     gotostage()
+                    finish()
+
                 }
 
             }
@@ -120,24 +127,26 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel1.setOnClickListener {
                     currentlevel=1
                     gotostage()
+                    finish()
                 }
                 binding.btnlevel2.setOnClickListener {
                     currentlevel=2
                     gotostage()
+                    finish()
                 }
                 binding.btnlevel3.setOnClickListener {
                     currentlevel=3
                     gotostage()
+                    finish()
                 }
                 binding.btnlevel4.setOnClickListener {
                     currentlevel=4
                     gotostage()
+                    finish()
                 }
             }
 
-            5 -> run {
-                setData.range = 5
-            }
+
 
             else -> {
                 Toast.makeText(this@LevelActivity, "Level Over", Toast.LENGTH_SHORT).show()

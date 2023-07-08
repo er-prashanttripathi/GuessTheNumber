@@ -3,17 +3,26 @@ package com.example.guessthenumber
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
 import com.example.guessthenumber.setData.range
+import com.example.guessthenumber.setData.setMaxSteps
+import com.example.guessthenumber.setData.setrange
 import com.example.guessthenumber.setData.stage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlin.random.Random
 
 
@@ -24,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     var inputno: Int = -1
     var stepcount: Int = 0
     var rno: Int = -1
+    lateinit var userDetail: UserDetails
 
     private lateinit var m: String
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,22 +103,40 @@ class MainActivity : AppCompatActivity() {
                     txtcount.text = "Step count $stepcount"
 
                     if (stage < 5) {
+                        Log.d("level&stage1", "level:$level Stage:$stage")
                         stage++
                         setData.setrange(this@MainActivity)
                         setData.setMaxSteps(this@MainActivity)
-                    }
-                    else {
+                        Log.d("level&stage2", "level:$level Stage:$stage")
+                        updatedata("pt", level,stage)
+                        runBlocking {
+                            async { CoroutineScope(Dispatchers.IO).launch {
+                                userDetail.storeUserData("prashant", level.toInt(),stage.toInt())
+                            } }
+                            Log.d("level&stage3", "level:$level Stage:$stage")
+                        }
+
+
+                        movebacktostage()
+                    } else {
                         if (level < 5) {
+
                             level++
+
                             setData.setrange(this@MainActivity)
                             setData.setMaxSteps(this@MainActivity)
+
                             movebacktolevel()
+                        } else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Congratulations!, All Level Completed",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        else {
-                            Toast.makeText(this@MainActivity, "Congratulations!, All Level Completed", Toast.LENGTH_SHORT).show()                        }
 
                     }
-                    movebacktostage()
+
                 }
 
 
@@ -116,6 +144,11 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun updatedata(n: String, l: Int, s: Int) {
+
+    }
+
 
     private fun movebacktolevel() {
         startActivity(Intent(this@MainActivity, LevelActivity::class.java))
