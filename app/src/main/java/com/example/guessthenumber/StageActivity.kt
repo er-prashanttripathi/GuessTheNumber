@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.example.guessthenumber.databinding.ActivityMainBinding
 import com.example.guessthenumber.databinding.ActivityStageBinding
@@ -24,9 +25,21 @@ class StageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStageBinding
     val activeColor = "#009688"
 
+    private lateinit var onBackPressCallback: OnBackPressedCallback //Backpress Logic 1/3
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_stage)
+        //------------------------Backpress Logic 2/3---------------------------
+        onBackPressCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle back press event here
+                startActivity(Intent(this@StageActivity, LevelActivity::class.java))
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressCallback)
+        //------------------------Backpress Logic 2/3---------------------------
         binding.apply {
             levelid.text="Level:$level"
             stageid.text="Stage:$stage"
@@ -37,6 +50,12 @@ class StageActivity : AppCompatActivity() {
         setMaxSteps(this@StageActivity)
         openGame()
     }
+    //Backpress Logic 3/3
+    override fun onDestroy() {
+        super.onDestroy()
+        onBackPressCallback.remove()
+    }
+    //Backpress Logic 3/3
 
     private fun openGame() {
         when (stage) {
