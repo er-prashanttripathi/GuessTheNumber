@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
         rno = generateRandomNo(range)
 
         binding.apply {
+            binding.txtlevel.text = "Level: $level"
+            binding.txtstage.text = "Stage: $stage"
+            binding.txtstepleft.text = "Steps Left: $maxstep"
             txtmsg.text = "Enter a no between 1 to $range & $rno"
             rcvOfError.layoutManager = LinearLayoutManager(this@MainActivity)
             rcvOfError.adapter = RcvAdapter(stringlist)
@@ -99,10 +102,13 @@ class MainActivity : AppCompatActivity() {
                     m = "You entered the correct number"
                     addToList("$inputno :$m")
                     txtmsg.text = "You entered the correct number"
-                    txtRandomNo.text = "Random No is, $rno!"
+                    txtRandomNo.text = "Answer is, $rno!"
                     txtWon.text = "YOU WON!!!!!!"
-                    txtcount.text = "Step count $stepcount"
-
+                    txtcount.text = "You took $stepcount steps to complete Stage $stage"
+                    cardStageOver.visibility=View.VISIBLE
+                    btnGoToStage.setOnClickListener {
+                        movebacktostage()
+                    }
                     if (stage < 5 && currentstage==stage) {
                         Log.d("level&stage1", "level:$level Stage:$stage")
                         stage++
@@ -130,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                     }
-                    movebacktostage()
+//                    movebacktostage()
                 }
 
 

@@ -4,134 +4,165 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@id/parentconstraint"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LevelActivity"
+    android:background="@drawable/bgfour">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutScoreLevel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bgfour"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".LevelActivity"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/parentconstraint"
+        app:layout_constraintLeft_toLeftOf="@id/parentconstraint">
+        <ImageView
+            android:id="@+id/outlineScoreLevel"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
 
-        <LinearLayout
-           android:elevation="10dp"
-            android:layout_width="match_parent"
+            android:foregroundGravity="right"
+            android:src="@drawable/ic_airplay_outline"
+            app:layout_constraintTop_toTopOf="@id/layoutScoreLevel"
+            app:layout_constraintBottom_toBottomOf="@id/layoutScoreLevel"
+            app:layout_constraintLeft_toLeftOf="@id/layoutScoreLevel"/>
+        <TextView
+            android:id="@+id/vlevelid"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="top"
-         android:layout_marginStart="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:background="#22423b"
-                android:paddingHorizontal="10dp"
-                android:id="@+id/vlevelid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:text="level"
-                app:fontFamily="@font/vt323"
-                android:textColor="#0afaff"
-                android:textSize="32sp" />
-
-            <TextView
-                android:background="#22423b"
-                android:id="@+id/vstageid"
-                android:paddingHorizontal="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:text="stage"
-                app:fontFamily="@font/vt323"
-                android:textColor="#0afaff"
-                android:textSize="32sp" />
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnlevel1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#22423b"
-            android:clickable="false"
-            android:gravity="center"
-            android:text="Level: 1"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            app:cornerRadius="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="25dp"
+            android:text="level"
             app:fontFamily="@font/vt323"
+            android:textColor="#0CDAF4"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            app:layout_constraintLeft_toLeftOf="@id/outlineScoreLevel"
+            app:layout_constraintRight_toRightOf="@id/outlineScoreLevel"
+            app:layout_constraintTop_toTopOf="@id/outlineScoreLevel"/>
+        <TextView
+            android:id="@+id/vstageid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="stage"
+            app:fontFamily="@font/vt323"
+            android:textColor="#0CDAF4"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/vlevelid"
+            app:layout_constraintLeft_toLeftOf="@id/outlineScoreLevel"
+            app:layout_constraintRight_toRightOf="@id/outlineScoreLevel"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintTop_toTopOf="@id/parentconstraint"
+        app:layout_constraintBottom_toBottomOf="@id/parentconstraint"
+        app:layout_constraintRight_toRightOf="@id/parentconstraint">
+        <com.google.android.material.button.MaterialButton
+            android:elevation="50dp"
+            app:elevation="50dp"
+            android:layout_gravity="right"
+            android:id="@+id/btnlevel1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="21sp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="#22423b"
             app:strokeColor="#0afaff"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="2dp"
+            android:text="Level 1"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+
+            app:cornerRadius="10dp"
+
+            app:layout_constraintRight_toRightOf="@id/layoutScoreLevel"
+            app:layout_constraintTop_toTopOf="@id/layoutScoreLevel"
+            app:layout_constraintBottom_toBottomOf="@id/layoutScoreLevel"
+            />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="21sp"
+            android:layout_marginEnd="0dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#22423b"
             android:gravity="center"
             android:text="Level: 2"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            app:cornerRadius="10dp"
-            app:fontFamily="@font/vt323"
             app:strokeColor="#0afaff"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="2dp"
+            android:textColor="@color/white"
+            app:fontFamily="@font/vt323"
+
+            app:cornerRadius="10dp"
+            />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="21sp"
+            android:layout_marginEnd="0dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#22423b"
             android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
             android:text="Level: 3"
             android:textColor="@color/white"
-            android:textSize="32sp"
-            app:cornerRadius="10dp"
             app:fontFamily="@font/vt323"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp" />
+
+            app:cornerRadius="10dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="21sp"
+            android:layout_marginEnd="0dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#22423b"
             android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
             android:text="Level: 4"
             android:textColor="@color/white"
-            android:textSize="32sp"
-            app:cornerRadius="10dp"
             app:fontFamily="@font/vt323"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp" />
+            app:cornerRadius="10dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnlevel5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="right"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="21sp"
+            android:layout_marginEnd="0dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#22423b"
             android:gravity="center"
+            app:strokeColor="#0afaff"
+            app:strokeWidth="2dp"
             android:text="Level: 5"
             android:textColor="@color/white"
-            android:textSize="32sp"
-            app:cornerRadius="10dp"
             app:fontFamily="@font/vt323"
-            app:strokeColor="#0afaff"
-            app:strokeWidth="2dp" />
-
-
+            app:cornerRadius="10dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
