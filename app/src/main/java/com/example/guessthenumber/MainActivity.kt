@@ -1,4 +1,3 @@
-
 package com.example.guessthenumber
 
 import android.content.Intent
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     var inputno: Int = -1
     var stepcount: Int = 0
     var rno: Int = -1
-    lateinit var userDetail: UserDetails
+    lateinit var userDetailStage: UserDetails
 
     private lateinit var onBackPressCallback: OnBackPressedCallback
 
@@ -43,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         Toast.makeText(this, "$level,$range,$maxstep", Toast.LENGTH_SHORT).show()
         rno = generateRandomNo(range)
+//        userDetailStage = UserDetails(this@MainActivity)
+
 
         onBackPressCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -141,6 +142,15 @@ class MainActivity : AppCompatActivity() {
                 else -> {
                     Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT).show()
                     val m = "You entered the correct number"
+//===================================================================================
+                    /*    CoroutineScope(Dispatchers.IO).launch {
+
+                            userDetailStage.storeUserLevel(level)
+                            userDetailStage.storeUserStage(stage)
+
+                        }*/
+//==========================================================================
+
                     addToList("$inputno: $m")
                     txtmsg.text = "You entered the correct number"
                     txtRandomNo.text = "Answer is $rno!"
@@ -148,7 +158,10 @@ class MainActivity : AppCompatActivity() {
                     txtcount.text = "You took $stepcount steps to complete Stage $stage"
                     cardStageOver.visibility = View.VISIBLE
                     btnGoToStage.setOnClickListener {
-
+                        moveBackToStage()
+                    }
+                    btnGoToLevel.setOnClickListener {
+                        moveBackToLevel()
                     }
 
                     if (stage < 5 && currentstage == stage) {
@@ -211,7 +224,7 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this@MainActivity, "No Chance Left", Toast.LENGTH_SHORT).show()
-            binding.cardMovesOver.visibility=View.VISIBLE
+            binding.cardMovesOver.visibility = View.VISIBLE
             binding.btnMoveGoToStage.setOnClickListener {
                 moveBackToStage()
             }

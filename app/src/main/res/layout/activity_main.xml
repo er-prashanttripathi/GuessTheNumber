@@ -424,14 +424,14 @@
                         app:icon="@drawable/baseline_arrow_back_ios_24" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnGoToNext"
+                        android:id="@+id/btnGoToLevel"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="10dp"
                         android:layout_weight="1"
                         android:backgroundTint="#497a88"
-                        android:text="Next Stage"
+                        android:text="Go To Level"
                         android:textColor="#D1D9EF"
                         android:textSize="16sp"
                         app:cornerRadius="5dp"
