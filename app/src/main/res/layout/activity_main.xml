@@ -165,7 +165,6 @@
                             android:layout_width="55dp"
                             android:layout_height="55dp"
                             android:layout_marginHorizontal="2.5dp"
-                         
                             android:backgroundTint="#497a88"
                             android:text="1"
                             app:cornerRadius="10dp"
@@ -341,6 +340,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:text="Congratulations!!"
+                    android:textAlignment="center"
                     android:textColor="#4CAF50"
                     android:textSize="40sp"
                     app:fontFamily="@font/vt323" />
@@ -352,6 +352,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:textColor="#4CAF50"
+                    android:textAlignment="center"
                     android:textSize="32sp"
                     app:fontFamily="@font/vt323"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -365,6 +366,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:textColor="#58BCEA"
+                    android:textAlignment="center"
                     android:textSize="32sp"
                     app:fontFamily="@font/vt323"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -376,6 +378,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:layout_marginTop="20dp"
                     android:textColor="#0afaff"
                     android:textSize="32sp"
@@ -391,6 +394,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:textColor="#0afaff"
+                    android:textAlignment="center"
                     android:textSize="32sp"
                     app:fontFamily="@font/vt323"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -437,10 +441,66 @@
                 </LinearLayout>
 
 
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMovesOver"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="#000513"
+            app:cardElevation="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:strokeColor="#23DBF3"
+            app:strokeWidth="3dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="40dp"
 
+                    android:src="@drawable/baseline_cancel_24"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtmsgmoveover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="You ran out off move!!"
+                    android:textAlignment="center"
+                    android:textColor="#F81403"
+                    android:textSize="32sp"
+                    app:fontFamily="@font/vt323"
+                    android:layout_marginVertical="30dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMoveGoToStage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="#497a88"
+                    android:text="Go To Stages"
+                    android:textColor="#D1D9EF"
+                    android:textSize="16sp"
+                    app:cornerRadius="5dp"
+                    app:fontFamily="@font/vt323"
+                    app:icon="@drawable/baseline_arrow_back_ios_24" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

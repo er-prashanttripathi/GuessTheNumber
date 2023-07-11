@@ -148,8 +148,9 @@ class MainActivity : AppCompatActivity() {
                     txtcount.text = "You took $stepcount steps to complete Stage $stage"
                     cardStageOver.visibility = View.VISIBLE
                     btnGoToStage.setOnClickListener {
-                        moveBackToStage()
+
                     }
+
                     if (stage < 5 && currentstage == stage) {
                         Log.d("level&stage1", "level: $level Stage: $stage")
                         stage++
@@ -210,6 +211,10 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             Toast.makeText(this@MainActivity, "No Chance Left", Toast.LENGTH_SHORT).show()
+            binding.cardMovesOver.visibility=View.VISIBLE
+            binding.btnMoveGoToStage.setOnClickListener {
+                moveBackToStage()
+            }
         }
     }
 
