@@ -29,11 +29,11 @@ class LevelActivity : AppCompatActivity() {
 
         Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
         Log.d("levelNstate1", "onCreate: ${level}  & $stage")
-        openlevel()
+
         getuserlevel()
+        openlevel()
         Log.d("levelNstate2", "onCreate: $level & $stage")
     }
-
 
 
     private fun getuserlevel() {
@@ -72,20 +72,20 @@ class LevelActivity : AppCompatActivity() {
             1 -> {
                 binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel1.setOnClickListener {
-                    currentlevel=1
+                    currentlevel = 1
                     gotostage()
                 }
             }
 
             2 -> {
                 binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel1.setOnClickListener {
-                    currentlevel=1
+                    currentlevel = 1
                     gotostage()
                 }
+                binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel2.setOnClickListener {
-                    currentlevel=2
+                    currentlevel = 2
                     gotostage()
                 }
 
@@ -96,15 +96,15 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel1.setOnClickListener {
-                    currentlevel=1
+                    currentlevel = 1
                     gotostage()
                 }
                 binding.btnlevel2.setOnClickListener {
-                    currentlevel=2
+                    currentlevel = 2
                     gotostage()
                 }
                 binding.btnlevel3.setOnClickListener {
-                    currentlevel=3
+                    currentlevel = 3
                     gotostage()
                 }
 
@@ -117,23 +117,22 @@ class LevelActivity : AppCompatActivity() {
                 binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel4.setBackgroundColor(Color.parseColor(activeColor))
                 binding.btnlevel1.setOnClickListener {
-                    currentlevel=1
+                    currentlevel = 1
                     gotostage()
                 }
                 binding.btnlevel2.setOnClickListener {
-                    currentlevel=2
+                    currentlevel = 2
                     gotostage()
                 }
                 binding.btnlevel3.setOnClickListener {
-                    currentlevel=3
+                    currentlevel = 3
                     gotostage()
                 }
                 binding.btnlevel4.setOnClickListener {
-                    currentlevel=4
+                    currentlevel = 4
                     gotostage()
                 }
             }
-
 
 
             else -> {
@@ -147,6 +146,7 @@ class LevelActivity : AppCompatActivity() {
 
 
     private fun gotostage() {
+        setData.playsound(this, R.raw.interfacesound)
         startActivity(Intent(this@LevelActivity, StageActivity::class.java))
         finish()
     }

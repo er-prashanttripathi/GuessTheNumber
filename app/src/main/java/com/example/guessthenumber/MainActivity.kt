@@ -1,6 +1,7 @@
 package com.example.guessthenumber
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.guessthenumber.databinding.ActivityMainBinding
 import com.example.guessthenumber.setData.currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
+import com.example.guessthenumber.setData.playsound
 import com.example.guessthenumber.setData.range
 import com.example.guessthenumber.setData.setMaxSteps
 import com.example.guessthenumber.setData.setrange
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         Toast.makeText(this, "$level,$range,$maxstep", Toast.LENGTH_SHORT).show()
         rno = generateRandomNo(range)
         userDetailStage = UserDetails(this@MainActivity)
@@ -55,33 +58,43 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             btnNo0.setOnClickListener {
+                playclicksound()
                 txtinput.append("0")
             }
             btnNo1.setOnClickListener {
+                playclicksound()
                 txtinput.append("1")
             }
             btnNo2.setOnClickListener {
+                playclicksound()
                 txtinput.append("2")
             }
             btnNo3.setOnClickListener {
+                playclicksound()
                 txtinput.append("3")
             }
             btnNo4.setOnClickListener {
+                playclicksound()
                 txtinput.append("4")
             }
             btnNo5.setOnClickListener {
+                playclicksound()
                 txtinput.append("5")
             }
             btnNo6.setOnClickListener {
+                playclicksound()
                 txtinput.append("6")
             }
             btnNo7.setOnClickListener {
+                playclicksound()
                 txtinput.append("7")
             }
             btnNo8.setOnClickListener {
+                playclicksound()
                 txtinput.append("8")
             }
             btnNo9.setOnClickListener {
+                playclicksound()
                 txtinput.append("9")
             }
             binding.txtlevel.text = "Level: $level"
@@ -91,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             rcvOfError.layoutManager = LinearLayoutManager(this@MainActivity)
             rcvOfError.adapter = RcvAdapter(stringlist)
             btnSubmit.setOnClickListener {
+                playclicksound()
                 takeInput()
                 increaseStepCount()
                 txtcount.text = "Step count $stepcount"
@@ -100,6 +114,10 @@ class MainActivity : AppCompatActivity() {
                 inputno = -1
             }
         }
+    }
+
+    private fun playclicksound() {
+        setData.playsound(this@MainActivity, R.raw.clickbutton)
     }
 
     override fun onDestroy() {
@@ -158,6 +176,8 @@ class MainActivity : AppCompatActivity() {
                     txtWon.text = "YOU WON!!!!!!"
                     txtcount.text = "You took $stepcount steps to complete Stage $stage"
                     cardStageOver.visibility = View.VISIBLE
+                    playsound(this@MainActivity,R.raw.gamebonus)
+
                     btnGoToStage.setOnClickListener {
                         moveBackToStage()
                     }
@@ -197,12 +217,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun moveBackToLevel() {
+        playsound(this,R.raw.jump)
         startActivity(Intent(this@MainActivity, LevelActivity::class.java))
         finish()
     }
 
     private fun moveBackToStage() {
+        playsound(this,R.raw.jump)
         startActivity(Intent(this@MainActivity, StageActivity::class.java))
         finish()
     }
@@ -226,6 +250,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this@MainActivity, "No Chance Left", Toast.LENGTH_SHORT).show()
             binding.cardMovesOver.visibility = View.VISIBLE
+            playsound(this,R.raw.outofmove)
             binding.btnMoveGoToStage.setOnClickListener {
                 moveBackToStage()
             }

@@ -30,6 +30,7 @@ class StageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_stage)
+
         //------------------------Backpress Logic 2/3---------------------------
         onBackPressCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -164,6 +165,7 @@ class StageActivity : AppCompatActivity() {
     }
 
     private fun gotoGame() {
+        setData.playsound(this, R.raw.interfacesound)
         startActivity(Intent(this@StageActivity, MainActivity::class.java))
         finish()
     }

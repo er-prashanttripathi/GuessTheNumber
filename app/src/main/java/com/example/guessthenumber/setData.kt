@@ -1,6 +1,7 @@
 package com.example.guessthenumber
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.widget.Toast
 
 object setData {
@@ -37,5 +38,10 @@ object setData {
             }
 
         }
+    }
+    fun playsound(context: Context,sound: Int) {
+        //code to play sound
+        var mediaPlayer = MediaPlayer.create(context, sound)
+        mediaPlayer.start()
     }
 }
