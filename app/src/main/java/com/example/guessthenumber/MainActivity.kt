@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         Toast.makeText(this, "$level,$range,$maxstep", Toast.LENGTH_SHORT).show()
         rno = generateRandomNo(range)
-//        userDetailStage = UserDetails(this@MainActivity)
+        userDetailStage = UserDetails(this@MainActivity)
 
 
         onBackPressCallback = object : OnBackPressedCallback(true) {
@@ -140,15 +140,16 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 else -> {
+//                    val x=UserDetails(this@MainActivity)
                     Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT).show()
                     val m = "You entered the correct number"
 //===================================================================================
-                    /*    CoroutineScope(Dispatchers.IO).launch {
+                        CoroutineScope(Dispatchers.IO).launch {
 
                             userDetailStage.storeUserLevel(level)
                             userDetailStage.storeUserStage(stage)
 
-                        }*/
+                        }
 //==========================================================================
 
                     addToList("$inputno: $m")

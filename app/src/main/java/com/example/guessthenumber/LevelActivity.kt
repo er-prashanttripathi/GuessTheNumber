@@ -26,12 +26,8 @@ class LevelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_level)
         userDetail = UserDetails(this)
-        /*binding.apply {
 
-            vlevelid.text="Level:$level"
-            vstageid.text="Stage:$stage"
-        }*/
-//        Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
         Log.d("levelNstate1", "onCreate: ${level}  & $stage")
         openlevel()
         getuserlevel()
