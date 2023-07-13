@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -13,13 +14,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
-import com.example.guessthenumber.setData.currentstage
+//import com.example.guessthenumber.setData.currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
 import com.example.guessthenumber.setData.playsound
 import com.example.guessthenumber.setData.range
 import com.example.guessthenumber.setData.setMaxSteps
 import com.example.guessthenumber.setData.setrange
+import com.example.guessthenumber.setData.soundFlag
 import com.example.guessthenumber.setData.stage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -55,9 +57,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
         onBackPressedDispatcher.addCallback(this, onBackPressCallback)
-
         binding.apply {
-            btnNo0.setOnClickListener {
+      /*      btnNo0.setOnClickListener {
                 playclicksound()
                 txtinput.append("0")
             }
@@ -97,7 +98,26 @@ class MainActivity : AppCompatActivity() {
                 playclicksound()
                 txtinput.append("9")
             }
-            binding.txtlevel.text = "Level: $level"
+*/        binding.apply {
+            val numberClickListener = View.OnClickListener { view ->
+                playclicksound()
+                val number = (view as Button).text.toString()
+                txtinput.append(number)
+            }
+
+            btnNo0.setOnClickListener(numberClickListener)
+            btnNo1.setOnClickListener(numberClickListener)
+            btnNo2.setOnClickListener(numberClickListener)
+            btnNo3.setOnClickListener(numberClickListener)
+            btnNo4.setOnClickListener(numberClickListener)
+            btnNo5.setOnClickListener(numberClickListener)
+            btnNo6.setOnClickListener(numberClickListener)
+            btnNo7.setOnClickListener(numberClickListener)
+            btnNo8.setOnClickListener(numberClickListener)
+            btnNo9.setOnClickListener(numberClickListener)
+        }
+
+        binding.txtlevel.text = "Level: $level"
             binding.txtstage.text = "Stage: $stage"
             binding.txtstepleft.text = "Steps Left: $maxstep"
             txtmsg.text = "Enter a number between 1 to $range & $rno"
@@ -117,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playclicksound() {
-        setData.playsound(this@MainActivity, R.raw.clickbutton)
+        setData.playsound(this@MainActivity, R.raw.clickbutton, soundFlag)
     }
 
     override fun onDestroy() {
@@ -157,17 +177,17 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                else -> {
+              /*  else -> {
 //                    val x=UserDetails(this@MainActivity)
                     Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT).show()
                     val m = "You entered the correct number"
 //===================================================================================
-                        CoroutineScope(Dispatchers.IO).launch {
+                    CoroutineScope(Dispatchers.IO).launch {
 
-                            userDetailStage.storeUserLevel(level)
-                            userDetailStage.storeUserStage(stage)
+                        userDetailStage.storeUserLevel(level)
+                        userDetailStage.storeUserStage(stage)
 
-                        }
+                    }
 //==========================================================================
 
                     addToList("$inputno: $m")
@@ -176,7 +196,7 @@ class MainActivity : AppCompatActivity() {
                     txtWon.text = "YOU WON!!!!!!"
                     txtcount.text = "You took $stepcount steps to complete Stage $stage"
                     cardStageOver.visibility = View.VISIBLE
-                    playsound(this@MainActivity,R.raw.gamebonus)
+                    playsound(this@MainActivity, R.raw.gamebonus, soundFlag)
 
                     btnGoToStage.setOnClickListener {
                         moveBackToStage()
@@ -212,21 +232,69 @@ class MainActivity : AppCompatActivity() {
 
                     }
 //                    moveBackToStage()
+                }*/
+                else -> {
+                    Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT).show()
+                    val m = "You entered the correct number"
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        userDetailStage.storeUserLevel(level)
+                        userDetailStage.storeUserStage(stage)
+                    }
+
+                    addToList("$inputno: $m")
+                    txtmsg.text = "You entered the correct number"
+                    txtRandomNo.text = "Answer is $rno!"
+                    txtWon.text = "YOU WON!!!!!!"
+                    txtcount.text = "You took $stepcount steps to complete Stage $stage"
+                    cardStageOver.visibility = View.VISIBLE
+                    playsound(this@MainActivity, R.raw.gamebonus, soundFlag)
+
+                    btnGoToStage.setOnClickListener {
+                        moveBackToStage()
+                    }
+                    btnGoToLevel.setOnClickListener {
+                        moveBackToLevel()
+                    }
+
+                    if (stage < 5 ) {
+                        Log.d("level&stage1", "level: $level Stage: $stage")
+                        stage++
+                        setData.setrange(this@MainActivity)
+                        setData.setMaxSteps(this@MainActivity)
+                        Log.d("level&stage2", "level: $level Stage: $stage")
+                    } else {
+                        Log.d("level&stage3", "level: $level Stage: $stage")
+                        if (level < 5 && stage == 5) {
+                            Log.d("level&stage4", "level: $level Stage: $stage")
+                            level++
+                            stage = 1
+                            setData.setrange(this@MainActivity)
+                            setData.setMaxSteps(this@MainActivity)
+                            Log.d("level&stage5", "level: $level Stage: $stage")
+                        } else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Congratulations! All Levels Completed",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
+
             }
         }
     }
 
 
-
     private fun moveBackToLevel() {
-        playsound(this,R.raw.jump)
+        playsound(this, R.raw.jump, soundFlag)
         startActivity(Intent(this@MainActivity, LevelActivity::class.java))
         finish()
     }
 
     private fun moveBackToStage() {
-        playsound(this,R.raw.jump)
+        playsound(this, R.raw.jump, soundFlag)
         startActivity(Intent(this@MainActivity, StageActivity::class.java))
         finish()
     }
@@ -250,7 +318,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this@MainActivity, "No Chance Left", Toast.LENGTH_SHORT).show()
             binding.cardMovesOver.visibility = View.VISIBLE
-            playsound(this,R.raw.outofmove)
+            playsound(this, R.raw.outofmove, soundFlag)
             binding.btnMoveGoToStage.setOnClickListener {
                 moveBackToStage()
             }

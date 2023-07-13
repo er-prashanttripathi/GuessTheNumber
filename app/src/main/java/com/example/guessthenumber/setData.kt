@@ -5,17 +5,17 @@ import android.media.MediaPlayer
 import android.widget.Toast
 
 object setData {
-    const val name:String="name"
-    var level:Int=1
-    var stage:Int=1
-    var range:Int=-1
-    var maxstep:Int=-1
-    var currentstage:Int=-1
-    var currentlevel:Int=-1
-    var uName:String="Prashant"
-    lateinit var userDetail: UserDetails
+    const val name: String = "name"
+    var level: Int = 1
+    var stage: Int = 1
+    var range: Int = -1
+    var maxstep: Int = -1
+//    var currentstage: Int = -1
+//    var currentlevel: Int = -1
 
-     fun setMaxSteps(context: Context) {
+    var soundFlag: Int = 1
+
+    fun setMaxSteps(context: Context) {
         when (stage) {
             1 -> maxstep = 10
             2 -> maxstep = 9
@@ -27,7 +27,7 @@ object setData {
         }
     }
 
-     fun setrange(context: Context) {
+    fun setrange(context: Context) {
         when (level) {
             1 -> range = 2
             2 -> range = 2
@@ -39,9 +39,13 @@ object setData {
 
         }
     }
-    fun playsound(context: Context,sound: Int) {
+
+    fun playsound(context: Context, sound: Int, musicFlag: Int) {
         //code to play sound
-        var mediaPlayer = MediaPlayer.create(context, sound)
-        mediaPlayer.start()
+        if (musicFlag == 1) {
+            var mediaPlayer = MediaPlayer.create(context, sound)
+            mediaPlayer.start()
+        }
+
     }
 }

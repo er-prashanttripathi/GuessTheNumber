@@ -324,14 +324,7 @@
                 android:background="#000513"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:backgroundTint="#497a88"
-                    android:src="@drawable/baseline_cancel_24" />
+
 
                 <TextView
                     android:id="@+id/txtcong"

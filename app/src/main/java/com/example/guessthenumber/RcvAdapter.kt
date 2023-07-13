@@ -15,7 +15,11 @@ class RcvAdapter(private val msg: List<String>) : RecyclerView.Adapter<RcvAdapte
         init {
             itemView.setOnClickListener { v: View ->
                 val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "You clicked on ${position + 1}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    itemView.context,
+                    "You clicked on ${position + 1}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -25,7 +29,8 @@ class RcvAdapter(private val msg: List<String>) : RecyclerView.Adapter<RcvAdapte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.rv_layout_row, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.rv_layout_row, parent, false)
         return ViewHolder(view)
     }
 

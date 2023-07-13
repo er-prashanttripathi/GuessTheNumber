@@ -14,57 +14,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.map
 
 
-
-
-/*class UserDetails(val context: Context) {
-    val Context.dataStore: DataStore<Preferences> by preferencesDataStore("settings")
-
-    companion object {
-        val USERNAME = stringPreferencesKey("USER_NAME")
-        val LEVEL = intPreferencesKey("LEVEL")
-        val STAGE = intPreferencesKey("STAGE")
-
-    }
-
-
-     suspend fun storeUserLevel(glevel: Int) {
-         try {
-             context.dataStore.edit { preferences ->
-                 preferences[LEVEL] = glevel
-             }
-         } catch (e: Exception) {
-             // Handle the exception
-             Log.e("DataStoreLevel", "Error storing user level: ${e.message}", e)
-         }
-     }
-    suspend fun storeUserStage(gstate: Int) {
-        try {
-            context.dataStore.edit { preferences ->
-                preferences[STAGE] = gstate
-            }
-        } catch (e: Exception) {
-            // Handle the exception
-            Log.e("DataStoreStage", "Error storing user stage: ${e.message}", e)
-        }
-    }
-
-    fun getName() = context.dataStore.data.map {
-        it[USERNAME] ?: "No Age Data Found"
-    }
-
-    fun getState() = context.dataStore.data.map {
-        it[STAGE] ?: 1
-
-    }
-
-    fun getLevel() = context.dataStore.data.map {
-        it[LEVEL] ?: 1
-    }
-}*/
-
-
-
-
 class UserDetails(val context: Context) {
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -73,10 +22,11 @@ class UserDetails(val context: Context) {
         val STAGE = intPreferencesKey("STAGE")
     }
 
-    private val pref: SharedPreferences =context.getSharedPreferences(
+    private val pref: SharedPreferences = context.getSharedPreferences(
         "USER_NAME",
         AppCompatActivity.MODE_PRIVATE
     )
+
     suspend fun storeUserLevel(glevel: Int) {
         try {
             context.dataStore.edit { preferences ->
@@ -87,6 +37,7 @@ class UserDetails(val context: Context) {
             Log.e("DataStoreLevel", "Error storing user level: ${e.message}", e)
         }
     }
+
     suspend fun storeUserStage(gstate: Int) {
         try {
             context.dataStore.edit { preferences ->
@@ -97,6 +48,7 @@ class UserDetails(val context: Context) {
             Log.e("DataStoreStage", "Error storing user stage: ${e.message}", e)
         }
     }
+
     fun getName() = context.dataStore.data.map {
         it[USERNAME] ?: "No Age Data Found"
     }
