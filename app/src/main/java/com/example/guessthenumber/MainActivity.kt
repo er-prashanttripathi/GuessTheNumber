@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
         onBackPressedDispatcher.addCallback(this, onBackPressCallback)
         binding.apply {
-      /*      btnNo0.setOnClickListener {
+            btnNo0.setOnClickListener {
                 playclicksound()
                 txtinput.append("0")
             }
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                 playclicksound()
                 txtinput.append("9")
             }
-*/        binding.apply {
+       /* binding.apply {
             val numberClickListener = View.OnClickListener { view ->
                 playclicksound()
                 val number = (view as Button).text.toString()
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
             btnNo7.setOnClickListener(numberClickListener)
             btnNo8.setOnClickListener(numberClickListener)
             btnNo9.setOnClickListener(numberClickListener)
-        }
+        }*/
 
         binding.txtlevel.text = "Level: $level"
             binding.txtstage.text = "Stage: $stage"

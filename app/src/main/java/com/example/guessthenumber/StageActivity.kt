@@ -10,6 +10,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.example.guessthenumber.databinding.ActivityMainBinding
 import com.example.guessthenumber.databinding.ActivityStageBinding
+import com.example.guessthenumber.setData.currentlevel
 //import com.example.guessthenumber.setData.// currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
@@ -61,108 +62,139 @@ class StageActivity : AppCompatActivity() {
     //Backpress Logic 3/3
 
     private fun openGame() {
-        when (stage) {
-            1 -> {
-                binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage1.setOnClickListener {
-                    // currentstage = 1
-                    gotoGame()
-
-                }
+        if (currentlevel< level){
+            binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
+            binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
+            binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
+            binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
+            binding.btnstage5.setBackgroundColor(Color.parseColor(activeColor))
+            binding.btnstage1.setOnClickListener {
+                // currentstage = 1
+                gotoGame()
             }
-
-            2 -> {
-                binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage1.setOnClickListener {
-                    // currentstage = 1
-                    gotoGame()
-                }
-                binding.btnstage2.setOnClickListener {
-                    // currentstage = 2
-                    gotoGame()
-                }
+            binding.btnstage2.setOnClickListener {
+                // currentstage = 2
+                gotoGame()
             }
-
-            3 -> {
-                binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage1.setOnClickListener {
-                    // currentstage = 1
-                    gotoGame()
-                }
-                binding.btnstage2.setOnClickListener {
-                    // currentstage = 2
-                    gotoGame()
-                }
-                binding.btnstage3.setOnClickListener {
-                    // currentstage = 3
-                    gotoGame()
-                }
-
+            binding.btnstage3.setOnClickListener {
+                // currentstage = 3
+                gotoGame()
             }
+            binding.btnstage4.setOnClickListener {
 
-            4 -> {
-
-                binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage1.setOnClickListener {
-                    // currentstage = 1
-                    gotoGame()
-                }
-                binding.btnstage2.setOnClickListener {
-                    // currentstage = 2
-                    gotoGame()
-                }
-                binding.btnstage3.setOnClickListener {
-                    // currentstage = 3
-                    gotoGame()
-                }
-                binding.btnstage4.setOnClickListener {
-
-                    // currentstage = 4
-                    gotoGame()
-                }
+                // currentstage = 4
+                gotoGame()
             }
-
-            5 -> {
-                binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage5.setBackgroundColor(Color.parseColor(activeColor))
-                binding.btnstage1.setOnClickListener {
-                    // currentstage = 1
-                    gotoGame()
-                }
-                binding.btnstage2.setOnClickListener {
-                    // currentstage = 2
-                    gotoGame()
-                }
-                binding.btnstage3.setOnClickListener {
-                    // currentstage = 3
-                    gotoGame()
-                }
-                binding.btnstage4.setOnClickListener {
-
-                    // currentstage = 4
-                    gotoGame()
-                }
-                binding.btnstage5.setOnClickListener {
-                    // currentstage = 5
-                    gotoGame()
-                }
+            binding.btnstage5.setOnClickListener {
+                // currentstage = 5
+                gotoGame()
             }
-
-            else -> {
-                Log.d("level&stage3", "level:$level Stage:$stage")
-                Toast.makeText(this@StageActivity, "stage Over", Toast.LENGTH_SHORT).show()
-            }
-
         }
+        else{
+            when (stage) {
+                1 -> {
+                    binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage1.setOnClickListener {
+                        // currentstage = 1
+                        gotoGame()
+
+                    }
+                }
+
+                2 -> {
+                    binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage1.setOnClickListener {
+                        // currentstage = 1
+                        gotoGame()
+                    }
+                    binding.btnstage2.setOnClickListener {
+                        // currentstage = 2
+                        gotoGame()
+                    }
+                }
+
+                3 -> {
+                    binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage1.setOnClickListener {
+                        // currentstage = 1
+                        gotoGame()
+                    }
+                    binding.btnstage2.setOnClickListener {
+                        // currentstage = 2
+                        gotoGame()
+                    }
+                    binding.btnstage3.setOnClickListener {
+                        // currentstage = 3
+                        gotoGame()
+                    }
+
+                }
+
+                4 -> {
+
+                    binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage1.setOnClickListener {
+                        // currentstage = 1
+                        gotoGame()
+                    }
+                    binding.btnstage2.setOnClickListener {
+                        // currentstage = 2
+                        gotoGame()
+                    }
+                    binding.btnstage3.setOnClickListener {
+                        // currentstage = 3
+                        gotoGame()
+                    }
+                    binding.btnstage4.setOnClickListener {
+
+                        // currentstage = 4
+                        gotoGame()
+                    }
+                }
+
+                5 -> {
+                    binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage5.setBackgroundColor(Color.parseColor(activeColor))
+                    binding.btnstage1.setOnClickListener {
+                        // currentstage = 1
+                        gotoGame()
+                    }
+                    binding.btnstage2.setOnClickListener {
+                        // currentstage = 2
+                        gotoGame()
+                    }
+                    binding.btnstage3.setOnClickListener {
+                        // currentstage = 3
+                        gotoGame()
+                    }
+                    binding.btnstage4.setOnClickListener {
+
+                        // currentstage = 4
+                        gotoGame()
+                    }
+                    binding.btnstage5.setOnClickListener {
+                        // currentstage = 5
+                        gotoGame()
+                    }
+                }
+
+                else -> {
+                    Log.d("level&stage3", "level:$level Stage:$stage")
+                    Toast.makeText(this@StageActivity, "stage Over", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        }
+
 
     }
 

@@ -10,8 +10,8 @@ object setData {
     var stage: Int = 1
     var range: Int = -1
     var maxstep: Int = -1
-//    var currentstage: Int = -1
-//    var currentlevel: Int = -1
+    var currentstage: Int = -0
+    var currentlevel: Int = -0
 
     var soundFlag: Int = 1
 
