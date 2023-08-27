@@ -33,6 +33,19 @@ class StageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_stage)
+        binding.btnsound.setOnClickListener {
+//sound Flag Logic
+            if (soundFlag == 0) {
+                soundFlag = 1
+                binding.btnsound.setImageResource(R.drawable.baseline_volume_off)
+                Toast.makeText(this, "soundFlag:$soundFlag", Toast.LENGTH_SHORT).show()
+            } else {
+                soundFlag = 0
+                binding.btnsound.setImageResource(R.drawable.baseline_volume_up_24)
+                Toast.makeText(this, "soundFlag:$soundFlag", Toast.LENGTH_SHORT).show()
+            }
+
+        }
 
         //------------------------Backpress Logic 2/3---------------------------
         onBackPressCallback = object : OnBackPressedCallback(true) {
