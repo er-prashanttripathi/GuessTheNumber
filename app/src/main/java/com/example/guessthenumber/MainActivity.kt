@@ -1,33 +1,27 @@
 package com.example.guessthenumber
 
+//import com.example.guessthenumber.setData.currentstage
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.guessthenumber.databinding.ActivityMainBinding
-//import com.example.guessthenumber.setData.currentstage
+import com.example.guessthenumber.setData.currentlevel
+import com.example.guessthenumber.setData.currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
 import com.example.guessthenumber.setData.playsound
 import com.example.guessthenumber.setData.range
-import com.example.guessthenumber.setData.setMaxSteps
-import com.example.guessthenumber.setData.setrange
 import com.example.guessthenumber.setData.soundFlag
 import com.example.guessthenumber.setData.stage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -98,27 +92,11 @@ class MainActivity : AppCompatActivity() {
                 playclicksound()
                 txtinput.append("9")
             }
-       /* binding.apply {
-            val numberClickListener = View.OnClickListener { view ->
-                playclicksound()
-                val number = (view as Button).text.toString()
-                txtinput.append(number)
-            }
 
-            btnNo0.setOnClickListener(numberClickListener)
-            btnNo1.setOnClickListener(numberClickListener)
-            btnNo2.setOnClickListener(numberClickListener)
-            btnNo3.setOnClickListener(numberClickListener)
-            btnNo4.setOnClickListener(numberClickListener)
-            btnNo5.setOnClickListener(numberClickListener)
-            btnNo6.setOnClickListener(numberClickListener)
-            btnNo7.setOnClickListener(numberClickListener)
-            btnNo8.setOnClickListener(numberClickListener)
-            btnNo9.setOnClickListener(numberClickListener)
-        }*/
 
-        binding.txtlevel.text = "Level: $level"
-            binding.txtstage.text = "Stage: $stage"
+        binding.txtlevel.text = "Level: $currentlevel"
+            binding.txtstage.text = "Stage: $currentstage" +
+                    ""
             binding.txtstepleft.text = "Steps Left: $maxstep"
             txtmsg.text = "Enter a number between 1 to $range & $rno"
             rcvOfError.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -177,62 +155,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-              /*  else -> {
-//                    val x=UserDetails(this@MainActivity)
-                    Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT).show()
-                    val m = "You entered the correct number"
-//===================================================================================
-                    CoroutineScope(Dispatchers.IO).launch {
 
-                        userDetailStage.storeUserLevel(level)
-                        userDetailStage.storeUserStage(stage)
-
-                    }
-//==========================================================================
-
-                    addToList("$inputno: $m")
-                    txtmsg.text = "You entered the correct number"
-                    txtRandomNo.text = "Answer is $rno!"
-                    txtWon.text = "YOU WON!!!!!!"
-                    txtcount.text = "You took $stepcount steps to complete Stage $stage"
-                    cardStageOver.visibility = View.VISIBLE
-                    playsound(this@MainActivity, R.raw.gamebonus, soundFlag)
-
-                    btnGoToStage.setOnClickListener {
-                        moveBackToStage()
-                    }
-                    btnGoToLevel.setOnClickListener {
-                        moveBackToLevel()
-                    }
-
-                    if (stage < 5 && currentstage == stage) {
-                        Log.d("level&stage1", "level: $level Stage: $stage")
-                        stage++
-                        setData.setrange(this@MainActivity)
-                        setData.setMaxSteps(this@MainActivity)
-                        Log.d("level&stage2", "level: $level Stage: $stage")
-
-                    } else {
-                        Log.d("level&stage3", "level: $level Stage: $stage")
-                        if (level < 5 && stage == 5) {
-                            Log.d("level&stage4", "level: $level Stage: $stage")
-                            level++
-                            stage = 1
-                            setData.setrange(this@MainActivity)
-                            setData.setMaxSteps(this@MainActivity)
-                            Log.d("level&stage5", "level: $level Stage: $stage")
-//                            moveBackToLevel()
-                        } else {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "Congratulations! All Levels Completed",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-
-                    }
-//                    moveBackToStage()
-                }*/
                 else -> {
                     Toast.makeText(this@MainActivity, "YOU WON!!!!!!", Toast.LENGTH_SHORT).show()
                     val m = "You entered the correct number"

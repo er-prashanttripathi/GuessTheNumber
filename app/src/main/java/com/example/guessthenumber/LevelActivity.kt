@@ -34,7 +34,8 @@ class LevelActivity : AppCompatActivity() {
                 soundFlag = 1
                 binding.btnsound.setImageResource(R.drawable.baseline_volume_off)
                 Toast.makeText(this, "soundFlag:$soundFlag", Toast.LENGTH_SHORT).show()
-            } else {
+            }
+            else {
                 soundFlag = 0
                 binding.btnsound.setImageResource(R.drawable.baseline_volume_up_24)
                 Toast.makeText(this, "soundFlag:$soundFlag", Toast.LENGTH_SHORT).show()
@@ -144,6 +145,34 @@ class LevelActivity : AppCompatActivity() {
                 }
                 binding.btnlevel4.setOnClickListener {
                     currentlevel = 4
+                    gotostage()
+                }
+            }
+            5 -> {
+
+                binding.btnlevel1.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel2.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel3.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel4.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel5.setBackgroundColor(Color.parseColor(activeColor))
+                binding.btnlevel1.setOnClickListener {
+                    currentlevel = 1
+                    gotostage()
+                }
+                binding.btnlevel2.setOnClickListener {
+                    currentlevel = 2
+                    gotostage()
+                }
+                binding.btnlevel3.setOnClickListener {
+                    currentlevel = 3
+                    gotostage()
+                }
+                binding.btnlevel4.setOnClickListener {
+                    currentlevel = 4
+                    gotostage()
+                }
+                binding.btnlevel5.setOnClickListener {
+                    currentlevel = 5
                     gotostage()
                 }
             }

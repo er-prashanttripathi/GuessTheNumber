@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.guessthenumber.databinding.ActivityMainBinding
 import com.example.guessthenumber.databinding.ActivityStageBinding
 import com.example.guessthenumber.setData.currentlevel
+import com.example.guessthenumber.setData.currentstage
 //import com.example.guessthenumber.setData.// currentstage
 import com.example.guessthenumber.setData.level
 import com.example.guessthenumber.setData.maxstep
@@ -69,24 +70,24 @@ class StageActivity : AppCompatActivity() {
             binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
             binding.btnstage5.setBackgroundColor(Color.parseColor(activeColor))
             binding.btnstage1.setOnClickListener {
-                // currentstage = 1
+                 currentstage = 1
                 gotoGame()
             }
             binding.btnstage2.setOnClickListener {
-                // currentstage = 2
+                 currentstage = 2
                 gotoGame()
             }
             binding.btnstage3.setOnClickListener {
-                // currentstage = 3
+                 currentstage = 3
                 gotoGame()
             }
             binding.btnstage4.setOnClickListener {
 
-                // currentstage = 4
+                 currentstage = 4
                 gotoGame()
             }
             binding.btnstage5.setOnClickListener {
-                // currentstage = 5
+                 currentstage = 5
                 gotoGame()
             }
         }
@@ -95,7 +96,7 @@ class StageActivity : AppCompatActivity() {
                 1 -> {
                     binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage1.setOnClickListener {
-                        // currentstage = 1
+                         currentstage = 1
                         gotoGame()
 
                     }
@@ -105,11 +106,11 @@ class StageActivity : AppCompatActivity() {
                     binding.btnstage1.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage1.setOnClickListener {
-                        // currentstage = 1
+                        currentstage = 1
                         gotoGame()
                     }
                     binding.btnstage2.setOnClickListener {
-                        // currentstage = 2
+                        currentstage = 2
                         gotoGame()
                     }
                 }
@@ -119,15 +120,15 @@ class StageActivity : AppCompatActivity() {
                     binding.btnstage2.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage1.setOnClickListener {
-                        // currentstage = 1
+                        currentstage = 1
                         gotoGame()
                     }
                     binding.btnstage2.setOnClickListener {
-                        // currentstage = 2
+                        currentstage = 2
                         gotoGame()
                     }
                     binding.btnstage3.setOnClickListener {
-                        // currentstage = 3
+                        currentstage = 3
                         gotoGame()
                     }
 
@@ -140,20 +141,20 @@ class StageActivity : AppCompatActivity() {
                     binding.btnstage3.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage1.setOnClickListener {
-                        // currentstage = 1
+                        currentstage = 1
                         gotoGame()
                     }
                     binding.btnstage2.setOnClickListener {
-                        // currentstage = 2
+                        currentstage = 2
                         gotoGame()
                     }
                     binding.btnstage3.setOnClickListener {
-                        // currentstage = 3
+                        currentstage = 3
                         gotoGame()
                     }
                     binding.btnstage4.setOnClickListener {
 
-                        // currentstage = 4
+                        currentstage = 4
                         gotoGame()
                     }
                 }
@@ -165,24 +166,24 @@ class StageActivity : AppCompatActivity() {
                     binding.btnstage4.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage5.setBackgroundColor(Color.parseColor(activeColor))
                     binding.btnstage1.setOnClickListener {
-                        // currentstage = 1
+                        currentstage = 1
                         gotoGame()
                     }
                     binding.btnstage2.setOnClickListener {
-                        // currentstage = 2
+                        currentstage = 2
                         gotoGame()
                     }
                     binding.btnstage3.setOnClickListener {
-                        // currentstage = 3
+                        currentstage = 3
                         gotoGame()
                     }
                     binding.btnstage4.setOnClickListener {
 
-                        // currentstage = 4
+                        currentstage = 4
                         gotoGame()
                     }
                     binding.btnstage5.setOnClickListener {
-                        // currentstage = 5
+                        currentstage = 5
                         gotoGame()
                     }
                 }
