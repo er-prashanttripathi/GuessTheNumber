@@ -45,7 +45,7 @@ class LevelActivity : AppCompatActivity() {
         Toast.makeText(this, "${level}  & ${stage}", Toast.LENGTH_SHORT).show()
         Log.d("levelNstate1", "onCreate: ${level}  & $stage")
         getuserlevel()
-        openlevel()
+//        openlevel()
         Log.d("levelNstate2", "onCreate: $level & $stage")
     }
 
